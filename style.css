@@ -356,11 +356,16 @@
   justify-content: center;
   gap: 2rem;
 }
-#calculations{
+#calculations, #numberContainer{
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
+}
+#numberContainer {
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 li {
   margin: 0 3px;
@@ -374,4 +379,5 @@ button {
 #calculationDisplay {
  height: 5rem;
  width: 10rem;
+ font-size: 3rem;
 }

@@ -1,33 +1,111 @@
+let firstNumber = null
+let secondNumber = null
+let operator = null
+
 function operate(num1,num2,symbol) {
-    const num1 = num1
-    const num2 = num2
+    const number1 = parseInt(num1)
+    const number2 = parseInt(num2)
     const operator = symbol
     if (operator === "+"){
-        return add(num1,num2)
+        const sum = number1+number2
+        setCalculate(sum)
+        saveFirstNum(sum)
     }
     else if (operator === "-"){
-        return subtract(num1,num2)
+        const theDifference = number1-number2
+        setCalculate(theDifference)
+        saveFirstNum(theDifference)
     }
     else if (operator === "*"){
-        return multiply(num1,num2)
+        const product = number1*number2
+        setCalculate(product)
+        saveFirstNum(product)
     }
     else if (operator === "/"){
-        return divide(num1,num2)
+        const quotient = number1 / number2
+        setCalculate(quotient)
+        saveFirstNum(quotient)
     }
 }
 
-function add(num1,num2) {
-    return num1 + num2
+function saveFirstNum(result){
+    firstNumber = String(result)
+    secondNumber = null
 }
 
-function subtract(num1,num2) {
-    return num1 - num2
+function setCalculate(number){
+    document.getElementById("calculationDisplay").placeholder = number
 }
 
-function multiply(num1,num2) {
-    return num1 * num2
+
+function respond(number) {
+    if (!firstNumber){
+        firstNumber = number
+        setCalculate(firstNumber)
+    }
+    else if (!operator){
+        firstNumber+= number
+        setCalculate(firstNumber)
+    }
+    else if (!secondNumber){
+        secondNumber = number
+        setCalculate(`${firstNumber} ${operator} ${secondNumber}`)
+    }
+    else {
+        secondNumber += number
+        setCalculate(`${firstNumber} ${operator} ${secondNumber}`)
+    }
 }
 
-function divide(num1,num2) {
-    return num1 / num2
-}
+document.getElementById('plus').addEventListener('click',()=> {
+    operator = '+'
+    setCalculate(`${firstNumber} +`)
+})
+document.getElementById('minus').addEventListener('click',()=> {
+    operator = '-'
+    setCalculate(`${firstNumber} -`)
+})
+document.getElementById('multiply').addEventListener('click',()=> {
+    operator = '*'
+    setCalculate(`${firstNumber} *`)
+})
+document.getElementById('divide').addEventListener('click',()=> {
+    operator = '/'
+    setCalculate(`${firstNumber} /`)
+})
+document.getElementById('equals').addEventListener('click',()=> {
+    operate(firstNumber,secondNumber,operator)
+})
+
+
+// numbers event listeners
+document.getElementById('one').addEventListener('click',()=> {
+    respond('1')
+})
+document.getElementById('two').addEventListener('click',()=> {
+    respond('2')
+})
+document.getElementById('three').addEventListener('click',()=> {
+   respond('3')
+})
+document.getElementById('four').addEventListener('click',()=> {
+    respond('4')
+})
+document.getElementById('five').addEventListener('click',()=> {
+    respond('5')
+})
+document.getElementById('six').addEventListener('click',()=> {
+    respond('6')
+})
+document.getElementById('seven').addEventListener('click',()=> {
+    respond('7')
+})
+document.getElementById('eight').addEventListener('click',()=> {
+    respond('8')
+})
+document.getElementById('nine').addEventListener('click',()=> {
+    respond('9')
+})
+document.getElementById('zero').addEventListener('click',()=> {
+    respond('0')
+})
