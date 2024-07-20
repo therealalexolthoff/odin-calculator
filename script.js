@@ -14,9 +14,6 @@ function operate(num1,num2,symbol) {
     else if (operator === "/"){
         return divide(num1,num2)
     }
-
-
-
 }
 
 function add(num1,num2) {
