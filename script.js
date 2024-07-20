@@ -64,6 +64,21 @@ function respond(number) {
     }
 }
 
+function respondToOperatorInput(operatorInput) {
+    if (operator && !secondNumber){
+        alert('Please Input A Second Number!')
+    }
+    else if (operator && secondNumber){
+        operate(firstNumber,secondNumber,operator)
+        operator = operatorInput
+        setCalculate(`${firstNumber} ${operatorInput}`)
+    }
+    else {
+        operator = operatorInput
+        setCalculate(`${firstNumber} ${operatorInput}`)
+    }
+}
+
 function clearAll(){
     firstNumber = null
     secondNumber = null
@@ -72,20 +87,16 @@ function clearAll(){
 }
 
 document.getElementById('plus').addEventListener('click',()=> {
-    operator = '+'
-    setCalculate(`${firstNumber} +`)
+    respondToOperatorInput('+')
 })
 document.getElementById('minus').addEventListener('click',()=> {
-    operator = '-'
-    setCalculate(`${firstNumber} -`)
+    respondToOperatorInput('-')
 })
 document.getElementById('multiply').addEventListener('click',()=> {
-    operator = '*'
-    setCalculate(`${firstNumber} *`)
+    respondToOperatorInput('*')
 })
 document.getElementById('divide').addEventListener('click',()=> {
-    operator = '/'
-    setCalculate(`${firstNumber} /`)
+    respondToOperatorInput('/')
 })
 document.getElementById('equals').addEventListener('click',()=> {
     operate(firstNumber,secondNumber,operator)
