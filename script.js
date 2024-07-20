@@ -38,6 +38,7 @@ function operate(num1,num2,symbol) {
 function saveFirstNum(result){
     firstNumber = String(result)
     secondNumber = null
+    operator = null
 }
 
 function setCalculate(number){
@@ -99,7 +100,13 @@ document.getElementById('divide').addEventListener('click',()=> {
     respondToOperatorInput('/')
 })
 document.getElementById('equals').addEventListener('click',()=> {
-    operate(firstNumber,secondNumber,operator)
+    if (secondNumber) {
+        operate(firstNumber,secondNumber,operator)
+    } 
+    else {
+        alert('Please Input A Second Number')
+    }
+    
 })
 document.getElementById('clear').addEventListener('click',()=> {
    clearAll()
