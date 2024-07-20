@@ -27,7 +27,11 @@ function operate(num1,num2,symbol) {
             setTimeout(clearAll,1000)
         }
         else {
-            const quotient = number1 / number2
+            let quotient = number1 / number2
+            const quotientString = String(quotient)
+            if (quotientString.length > 5 && quotientString.includes('.')) {
+                quotient = parseFloat(quotient.toFixed(5))
+            }
             setCalculate(quotient)
             saveFirstNum(quotient)
         }
@@ -36,7 +40,7 @@ function operate(num1,num2,symbol) {
 }
 
 function saveFirstNum(result){
-    firstNumber = String(result)
+    firstNumber = toString(result)
     secondNumber = null
     operator = null
 }
