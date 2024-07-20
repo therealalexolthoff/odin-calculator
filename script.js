@@ -22,9 +22,16 @@ function operate(num1,num2,symbol) {
         saveFirstNum(product)
     }
     else if (operator === "/"){
-        const quotient = number1 / number2
-        setCalculate(quotient)
-        saveFirstNum(quotient)
+        if (number2 === 0){
+            setCalculate('No dividing by 0')
+            setTimeout(clearAll,1000)
+        }
+        else {
+            const quotient = number1 / number2
+            setCalculate(quotient)
+            saveFirstNum(quotient)
+        }
+        
     }
 }
 
@@ -57,6 +64,13 @@ function respond(number) {
     }
 }
 
+function clearAll(){
+    firstNumber = null
+    secondNumber = null
+    operator = null
+    setCalculate('')
+}
+
 document.getElementById('plus').addEventListener('click',()=> {
     operator = '+'
     setCalculate(`${firstNumber} +`)
@@ -76,7 +90,9 @@ document.getElementById('divide').addEventListener('click',()=> {
 document.getElementById('equals').addEventListener('click',()=> {
     operate(firstNumber,secondNumber,operator)
 })
-
+document.getElementById('clear').addEventListener('click',()=> {
+   clearAll()
+})
 
 // numbers event listeners
 document.getElementById('one').addEventListener('click',()=> {
